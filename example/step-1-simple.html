@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>test</title>
+  <script src="../lib/jquery.js"></script>
+  <script>
+    $(function() {
+
+      var input = $('#J_input');
+
+      //用来获取字数
+      function getNum(){
+        return input.val().length;
+      }
+
+      //渲染元素
+      function render(){
+        var num = getNum();
+
+        //没有字数的容器就新建一个
+        if ($('#J_input_count').length == 0) {
+          input.after('<span id="J_input_count"></span>');
+        };
+
+        $('#J_input_count').html(num+'个字');
+      }
+
+      //监听事件
+      input.on('keyup',function(){
+        render();
+      });
+
+      //初始化，第一次渲染
+      render();
+
+
+    })
+  </script>
+</head>
+<body>
+<input type="text" id="J_input"/>
+</body>
+</html>
